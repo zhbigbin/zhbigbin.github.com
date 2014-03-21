@@ -1,0 +1,10 @@
+---
+layout: blog
+---
+{% include JB/setup %}
+<h2>{{ page.title }} ({{ page.date | date: "%Y-%m-%d"}})</h2>
+<h4>"{{ page.description }}"</h4>
+<hr>
+{{ content }}
+<hr>
+{% include JB/comments %}

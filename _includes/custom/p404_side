@@ -1,0 +1,6 @@
+<div class="span3">
+    <h2>支持公益</h2>
+    <a target="_blank" class="btn btn-success btn-large" href="{{ HOME_PATH }}404.html">访问<strong>404页面</strong>支持公益</a> 
+    <br>
+    <br>
+</div>

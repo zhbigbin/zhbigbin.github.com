@@ -5,7 +5,7 @@ require 'time'
 
 SOURCE = "."
 CONFIG = {
-  'version' => "0.3.0",
+  'version' => "0.2.13",
   'themes' => File.join(SOURCE, "_includes", "themes"),
   'layouts' => File.join(SOURCE, "_layouts"),
   'posts' => File.join(SOURCE, "_posts"),
@@ -40,12 +40,11 @@ module JB
   end #Path
 end #JB
 
-# Usage: rake post title="A Title" [date="2012-02-09"] [tags=[tag1, tag2]]
+# Usage: rake post title="A Title" [date="2012-02-09"]
 desc "Begin a new post in #{CONFIG['posts']}"
 task :post do
   abort("rake aborted: '#{CONFIG['posts']}' directory not found.") unless FileTest.directory?(CONFIG['posts'])
   title = ENV["title"] || "new-post"
-  tags = ENV["tags"] || "[]"
   slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
   begin
     date = (ENV['date'] ? Time.parse(ENV['date']) : Time.now).strftime('%Y-%m-%d')
@@ -64,12 +63,81 @@ task :post do
     post.puts "layout: post"
     post.puts "title: \"#{title.gsub(/-/,' ')}\""
     post.puts 'description: ""'
-    post.puts "category: "
+    post.puts "category: blog"
     post.puts "tags: []"
     post.puts "---"
     post.puts "{% include JB/setup %}"
   end
 end # task :post
+
+# Usage: rake blog title="A Title" [date="2012-02-09"]
+desc "Begin a new blog in #{CONFIG['posts']}"
+task :blog do
+  abort("rake aborted: '#{CONFIG['posts']}' directory not found.") unless FileTest.directory?(CONFIG['posts'])
+  title = ENV["title"] || "new-post"
+  slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+  begin
+    date = (ENV['date'] ? Time.parse(ENV['date']) : Time.now).strftime('%Y-%m-%d')
+  rescue Exception => e
+    puts "Error - date format must be YYYY-MM-DD, please check you typed it correctly!"
+    exit -1
+  end
+  filename = File.join(CONFIG['posts'], "#{date}-#{slug}.#{CONFIG['post_ext']}")
+  if File.exist?(filename)
+    abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
+  end
+  
+  puts "Creating new post: #{filename}"
+  open(filename, 'w') do |post|
+    post.puts "---"
+    post.puts "layout: blog-post"
+    post.puts "title: \"#{title.gsub(/-/,' ')}\""
+    post.puts 'description: ""'
+    post.puts "category: blog"
+    post.puts "tags: []"
+    post.puts "---"
+    post.puts "{% include JB/setup %}"
+  end
+end # task :post
+
+# Usage: rake book title="A Title" [date="2012-02-09"]
+desc "Begin a new book in #{CONFIG['posts']}"
+task :book do
+  abort("rake aborted: '#{CONFIG['posts']}' directory not found.") unless FileTest.directory?(CONFIG['posts'])
+  title = ENV["title"] || "new-post"
+  slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+  begin
+    date = (ENV['date'] ? Time.parse(ENV['date']) : Time.now).strftime('%Y-%m-%d')
+  rescue Exception => e
+    puts "Error - date format must be YYYY-MM-DD, please check you typed it correctly!"
+    exit -1
+  end
+  filename = File.join(CONFIG['posts'], "#{date}-#{slug}.#{CONFIG['post_ext']}")
+  if File.exist?(filename)
+    abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
+  end
+  
+  puts "Creating new post: #{filename}"
+  open(filename, 'w') do |post|
+    post.puts "---"
+    post.puts "layout: book-post"
+    post.puts "title: \"#{title.gsub(/-/,' ')}\""
+    post.puts 'author: ""'
+    post.puts 'cover: default.jpg'
+    post.puts 'urls: '
+    post.puts ' - text: '
+    post.puts '   url: '
+    post.puts 'star: 5'
+    post.puts 'description: ""'
+    post.puts "category: book"
+    post.puts "tags: []"
+    post.puts 'records: '
+    post.puts ' - datetime: '
+    post.puts '   content: '
+    post.puts "---"
+    post.puts "{% include JB/setup %}"
+  end
+end # task :book
 
 # Usage: rake page name="about.html"
 # You can also specify a sub-directory path.
@@ -198,8 +266,8 @@ namespace :theme do
     # Mirror each file into the framework making sure to prompt if already exists.
     packaged_theme_files.each do |filename|
       file_install_path = File.join(JB::Path.base, filename)
-      if File.exist? file_install_path and ask("#{file_install_path} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
-        next
+      if File.exist? file_install_path
+        next if ask("#{file_install_path} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
       else
         mkdir_p File.dirname(file_install_path)
         cp_r File.join(packaged_theme_path, filename), file_install_path

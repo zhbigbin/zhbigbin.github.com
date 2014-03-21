@@ -1,0 +1,34 @@
+---
+layout: book
+---
+{% include JB/setup %}
+<div class="thumbnail row-fluid">
+    <div class="span3">
+        <a href="{{ page.url }}"> 
+            <img style="width: 200px; height: 240px;" class="img-rounded" alt="{{page.title}}" src="{{ HOME_PATH }}book/covers/{{ page.cover }}">
+        </a>
+    </div>
+    <div class="caption span7">
+         <h2>{{ page.title }}</h2>
+         <ul class="tag_box inline">
+            {% assign tags_list = page.tags %}
+            {% include JB/tags_list %}
+         </ul>
+         <h3>作者: {{ page.author }}</h3>
+         <h3>加入时间: {{ page.date | date: "%Y-%m-%d"}}</h3>
+         <h3>评星: <span class="allstar{{ page.star }}"></span></h3>
+         <h3>描述: {{ page.description }}</h3>
+         <h3>相关链接: 
+            {% for link in page.urls %}
+            <a class="btn btn-primary" href="{{ link.url }}">{{ link.text }} </a>
+            {% endfor %}
+         </h3>
+         <h3>打卡:</h3>
+         {% for record in page.records %}
+           <p> - {{ record.datetime }} : {{ record.content }}</p>
+         {% endfor %}
+    </div>
+</div>
+{{ content }}
+<hr>
+{% include JB/comments %}

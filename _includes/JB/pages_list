@@ -4,10 +4,10 @@ Usage:
   1) assign the 'pages_list' variable to a valid array of pages or posts.
   2) include JB/pages_list
   example:
-    <ul>
+<ul>
   	  {% assign pages_list = site.pages %}  
   	  {% include JB/pages_list %}
-  	</ul>
+</ul>
   	
   Grouping: (optional): 
   	assign the 'group' variable to constrain the list to only pages/posts
@@ -27,9 +27,9 @@ Usage:
     {% if node.title != null %}
       {% if group == null or group == node.group %}
       	{% if page.url == node.url %}
-      	<li class="active"><a href="{{ BASE_PATH }}{{node.url}}" class="active">{{node.title}}</a></li>
+<li class="active"><a href="{{ BASE_PATH }}{{node.url}}" class="active">{{node.title}}</a></li>
       	{% else %}
-      	<li><a href="{{ BASE_PATH }}{{node.url}}">{{node.title}}</a></li>
+<li><a href="{{ BASE_PATH }}{{node.url}}">{{node.title}}</a></li>
       	{% endif %}
       {% endif %}
     {% endif %}

@@ -1,0 +1,31 @@
+{% if blogs_limit %}
+{% for post in blogs_list | limit:blogs_limit %}
+
+<div>
+<h2><a href="{{ post.url }}">{{ post.title }}</a><small> {{ post.date | date: "%d %b %Y" }}</small></h2> 
+<ul class="tag_box inline">
+{% assign tags_list = post.tags %}
+{% include JB/tags_list %}
+</ul>
+</div>
+<p style="font-size:120%">{{ post.content }}</p>
+<hr>
+
+{% endfor %}
+{% else %}
+{% for post in blogs_list %}
+
+<div>
+<h2><a href="{{ post.url }}">{{ post.title }}</a><small> {{ post.date | date: "%d %b %Y" }}</small></h2> 
+<ul class="tag_box inline">
+{% assign tags_list = post.tags %}
+{% include JB/tags_list %}
+</ul>
+</div>
+<p style="font-size:120%">{{ post.content }}</p>
+<hr>
+
+{% endfor %}
+{% endif %}
+{% assign blogs_list = nil %}
+{% assign blogs_limit = nil %}

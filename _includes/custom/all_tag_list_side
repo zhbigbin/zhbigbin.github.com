@@ -1,0 +1,7 @@
+    <div class="span3">
+        <h2>所有标签</h2>
+        <ul class="tag_box inline">
+        {% assign tags_list = site.tags %}
+        {% include JB/tags_list %}
+        </ul>
+    </div>

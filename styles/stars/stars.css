@@ -1,0 +1,40 @@
+.allstar50, .allstar50, .allstar45, .allstar40, .allstar35, .allstar30, .allstar25, .allstar20, .allstar15, .allstar10, .allstar05{
+    display: inline-block;
+    zoom: 1;
+    width: 55px;
+    height: 11px;
+    background:
+            url("stars.gif") no-repeat;
+    margin: 0 3px 0 0;
+    orverflow: hidden;
+}
+.allstar50{
+    background-position: 0 0;
+}
+.allstar45{
+    background-position: 0 -12px;
+}
+.allstar40{
+    background-position: 0 -23px;
+}
+.allstar35{
+    background-position: 0 -34px;
+}
+.allstar30{
+    background-position: 0 -45px;
+}
+.allstar25{
+    background-position: 0 -56px;
+}
+.allstar20{
+    background-position: 0 -67px;
+}
+.allstar15{
+    background-position: 0 -78px;
+}
+.allstar10{
+    background-position: 0 -89px;
+}
+.allstar05{
+    background-position: 0 -100px;
+}

@@ -1,0 +1,9 @@
+{% unless page.tags == empty %}
+    <div class="span3">
+        <h2>相关标签</h2>
+        <ul class="tag_box">
+        {% assign tags_list = page.tags %}
+        {% include JB/tags_list %}
+        </ul>
+    </div>
+{% endunless %}

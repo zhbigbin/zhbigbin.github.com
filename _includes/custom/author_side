@@ -1,0 +1,8 @@
+        <div class="span3">
+            <h2>青衣秀士</h2>
+                <img src="images/hqingyi.jpg" style="width:140px;height:140px" class="img-rounded">
+                <div class="caption">
+                    <p>所在地：北京</p>
+                    <p>从今天起，做一个幸福的程序员，看书编码调试程序。从明天起，关心性能优化，给每一个结构、算法取一个温暖的名字。我有一个工位，背朝厕所春暖花开。</p>
+                </div>
+        </div>
