@@ -11,12 +11,12 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : 青衣秀士的博客
+title : bigbin的博客
 tagline: java,eclipse,plugin,linux
 author :
-  name : 青衣秀士
-  email : huangb.qingy@gmail.com
-  github : HQingYi
+  name : bigbin
+  email : zhang2012bin@gmail.com
+  github : zhbigbin
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
@@ -81,7 +81,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : hqingyi
+      short_name : bigbin
     livefyre :
       site_id : 123
     intensedebate :
