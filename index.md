@@ -31,28 +31,7 @@ title: 首页
    # {% endfor %}
   #  </ul>
 #</div>
-#<h2>最新文章 <a href="{{ HOME_PATH }}blog" style="font-size:18px">(更多...)</a></h2>
-#{% assign blogs_list = site.categories.blog %}
-#{% assign blogs_limit = 2 %}
-#{% include custom/blogs_abs %}
-
-{% capture archives_year %}
-    {{ 'now' | date: '%Y' }}
-{% endcapture %}
-
-{% for post in site.posts %}
-    {% capture post_year %}
-        {{ post.date | date: '%Y' }}
-    {% endcapture %}
-
-    {% if archives_year != post_year %}
-        {% assign archives_year = post_year %}
-        <h1>{{ archives_year }}</h1>
-    {% endif %}
-    <div style="font-size:120%; padding-top:5px;">{{ post.date | date: "%m-%d" }}: 
-        {% if post.category == "blog" %}
-            <a href="{{ HOME_PATH }}blog">【博客】</a>
-        {% endif %}
-        <a href="{{post.url}}">{{ post.title }}</a>
-    </div>
-{% endfor %}
+<h2>最新文章 <a href="{{ HOME_PATH }}blog" style="font-size:18px">(更多...)</a></h2>
+{% assign blogs_list = site.categories.blog %}
+{% assign blogs_limit = 2 %}
+{% include custom/blogs_abs %}
