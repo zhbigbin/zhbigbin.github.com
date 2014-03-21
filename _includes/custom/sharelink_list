@@ -1,3 +1,3 @@
-            <li><a href="http://weibo.com/201287101" target="_blank"><img src="{{ HOME_PATH }}images/weibo.png" style="width:30px;height:30px;"></a></li>
+            <li><a href="http://weibo.com/bigdogbin" target="_blank"><img src="{{ HOME_PATH }}images/weibo.png" style="width:30px;height:30px;"></a></li>
             <li><a href="https://github.com/zhbigbin" target="_blank"><img src="{{ HOME_PATH }}images/github.png" style="width:30px;height:30px;"></a></li>
             <li><a href="/atom.xml" target="_blank"><img src="{{ HOME_PATH }}images/feed.png" style="width:30px;height:30px;"></a></li>
