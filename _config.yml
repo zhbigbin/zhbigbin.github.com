@@ -12,7 +12,7 @@ pygments: true
 # so be sure to set them if your theme uses them.
 #
 title : bigbin的博客
-tagline: java,eclipse,plugin,linux
+tagline: 程序员,阅读,体育,旅行
 author :
   name : bigbin
   email : zhang2012bin@gmail.com
